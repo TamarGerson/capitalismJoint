@@ -1,0 +1,286 @@
+/* CSS Reset & Global Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Load Custom Font: TheBasics */
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TheBasics';
+  src: url('./assets/fonts/TheBasics-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2d2c32; /* Primary background color from Figma design */
+  color: #ffffff;
+  /* Use your custom font here as the first choice, fallback to sans-serif */
+  font-family: 'TheBasics', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* Prevent default browser scrolling; we use custom canvas dragging */
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====================================================
+   Canvas Container (The Panning Area)
+==================================================== */
+.canvas-viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+}
+
+.canvas-viewport.dragging {
+  cursor: grabbing;
+}
+
+.canvas-content {
+  position: relative;
+  transform-origin: 0 0;
+  /* width and height are set inline via React props */
+}
+
+/* ====================================================
+   Header Component
+==================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115px; /* From Figma: h-[115px] */
+  background-color: #ffceeb;
+  z-index: 10; /* Z-Index 10: Foreground */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px; /* Match the base viewport width */
+  padding: 0 40px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.register-btn {
+  background: transparent;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.register-btn:hover {
+  background-color: #000;
+  color: #ffceeb;
+}
+
+.header-date {
+  color: #000;
+  font-size: 25px;
+}
+
+.header-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-title {
+  color: #000;
+  font-size: 30px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.header-right {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #000;
+  font-size: 30px;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #fe8d31; /* Orange accent on hover */
+}
+
+/* ====================================================
+   Video Card
+==================================================== */
+.video-card {
+  width: 359px;
+  height: 638px;
+  background-color: #000;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+  transform: scale(1.02); /* Slight lift effect on hover */
+  z-index: 5 !important; /* Bring to front on hover */
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ====================================================
+   Focal Elements
+==================================================== */
+.focal-element {
+  position: absolute;
+  z-index: 2; /* Z-Index 2: Middleground */
+}
+
+.focal-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.main-base-image {
+  width: 1649px;
+  height: 2104px;
+}
+
+/* Date and Time Container & Inner Items */
+.date-time-container {
+  position: absolute;
+  width: 697px;
+  height: 678px;
+}
+
+.date-image-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 691px;
+  height: 304px;
+}
+
+.time-image-wrapper {
+  position: absolute;
+  left: 0;
+  top: 325px;
+  width: 697px;
+  height: 188px;
+  background-color: #fe8d31;
+  border-radius: 38px;
+}
+
+.time-img {
+  position: absolute;
+  left: 30px;
+  top: 39px;
+  width: 631px;
+  height: 112px;
+  object-fit: contain;
+}
+
+.place-image-wrapper {
+  position: absolute;
+  left: 0;
+  top: 541px;
+  width: 691px;
+  height: 137px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
