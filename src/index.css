@@ -77,10 +77,149 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Levit';
+  src: url('./assets/fonts/Levit_Blended-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-Ultra.otf') format('opentype');
+  font-weight: 950;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AlfaBravo';
+  src: url('./assets/fonts/AlfaBravo-UltraItalic.otf') format('opentype');
+  font-weight: 950;
+  font-style: italic;
+}
+
+/* Load Custom Font: Narkiss Block Condensed TRIAL */
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Hairline.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Thin.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Extralight.otf') format('opentype');
+  font-weight: 250;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Heavy.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Narkiss Block Condensed TRIAL';
+  src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Load Custom Font: Narkiss Block TRIAL */
+@font-face {
+  font-family: 'Narkiss Block TRIAL';
+  src: url('./assets/fonts/NarkissBlockTRIAL-Thin.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #2d2c32; /* Primary background color from Figma design */
+  /* background-color: #f901b3; Primary background color from Figma design */
+  background-color: #ff00dd;
   color: #ffffff;
   /* Use your custom font here as the first choice, fallback to sans-serif */
   font-family: 'TheBasics', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -117,15 +256,60 @@ body {
 }
 
 /* ====================================================
-   Header Component
-=================================================== */
-.site-header {
+   Sponsor Header (Ad Header)
+   ==================================================== */
+.sponsor-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 85px; /* Scaled down from 115px */
-  background-color: #ffceeb;
+  height: 85px;
+  background-color: #dae2f6;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sponsor-logos-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  padding: 0 40px;
+}
+
+.sponsor-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-fallback-label {
+  font-family: inherit;
+  font-size: 16px;
+  color: #0d1b2a;
+  opacity: 0.7;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+/* ====================================================
+   Header Component
+   =================================================== */
+.site-header {
+  position: fixed;
+  top: 85px; /* Positioned below the 85px sponsor header */
+  left: 0;
+  width: 100%;
+  height: 85px; 
+  background-color: #e6ea72;
   z-index: 10; /* Z-Index 10: Foreground */
   display: flex;
   align-items: center;
@@ -133,6 +317,7 @@ body {
 }
 
 .header-content {
+  position: relative; /* Act as anchor for absolute centered title */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,48 +334,67 @@ body {
 
 .register-btn {
   background: transparent;
-  border: 1px solid #000;
+  border: 1px solid #ec00a5;
   border-radius: 10px;
-  padding: 6px 15px; /* Scaled down padding */
+  padding: 6px 15px;
   font-family: inherit;
-  font-size: 15px; /* Scaled down from 20px */
-  color: #000;
+  font-size: 15px;
+  font-weight: normal;
+  color: #ec00a5;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap; /* Prevent button text wrapping */
   transition: all 0.2s ease-in-out;
 }
 
 .register-btn:hover {
-  background-color: #000;
-  color: #ffceeb;
+  background-color: #ec00a5;
+  color: #FCCD8E;
 }
 
 .header-date {
-  color: #000;
-  font-size: 16px; /* Scaled down from 25px */
+  color: #ec00a5;
+  font-size: 18px; /* Scaled down from 25px */
+  font-weight: normal;
+  line-height: 1;
+  white-space: nowrap; /* Prevent date text wrapping to two lines */
 }
 
 .header-center {
-  flex-grow: 1;
+  position: absolute;
+  left:54%; /* Shifted left from 50% to prevent overlap with the date text */
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Let hover/drag events pass through the title area background */
 }
 
 .header-title {
-  color: #000;
+  color: #ec00a5;
   font-size: 22px; /* Scaled down from 30px */
   margin: 0;
-  font-weight: normal;
+  font-weight: 500; /* Fixed invalid 'medium' value to numeric 500 */
+  line-height: 1;
+  white-space: nowrap; /* Prevent title wrapping */
 }
 
 .header-right {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 
 .nav-link {
-  color: #000;
+  color: #d90a9b;
   font-size: 22px; /* Scaled down from 30px */
+  font-weight: normal; /* Add customizable font weight */
   text-decoration: none;
+  line-height: 1;
   transition: color 0.2s ease-in-out;
 }
 
@@ -202,6 +406,7 @@ body {
    Video Card
 ==================================================== */
 .video-card {
+  position: relative; /* Set to relative so absolute children are sized relative to the card */
   background-color: #000;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -220,6 +425,23 @@ body {
   object-fit: cover;
 }
 
+.video-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2; /* Sits on top of the video element */
+  pointer-events: none; /* Ignore pointer events so they pass to the video container hover handlers */
+  transition: opacity 0.35s ease-in-out;
+  opacity: 1;
+}
+
+.video-card.hovered .video-poster {
+  opacity: 0; /* Fade out the poster image on hover */
+}
+
 /* ====================================================
    Focal Elements (Scaled down by 0.7x for 1920x1200 screens)
 ==================================================== */
@@ -236,6 +458,29 @@ body {
 }
 
 .main-base-image {
+  position: relative;
+}
+/* Color wash overlay */
+.main-base-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffd65b; /* <-- Change this to the exact color you want for the wash! */
+  mix-blend-mode: screen;     /* <-- Play with: color, multiply, screen, overlay, or hue */
+  pointer-events: none;
+  
+  /* Mask using the same PNG image so the color only applies to opaque pixels */
+  -webkit-mask-image: url('/assets/main-base.png');
+  mask-image: url('/assets/main-base.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 /* Date and Time Container & Inner Items (Scaled by 0.7x) */
@@ -245,39 +490,286 @@ body {
   height: 475px; /* 678px * 0.7 */
 }
 
-.date-image-wrapper {
+/* Date, Time and Place Focal Text components */
+.focal-text {
+  font-family: 'AlfaBravo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  white-space: nowrap; /* Prevents text from wrapping to a new line */
+  user-select: none;
+}
+
+.focal-text-date {
   position: absolute;
-  left: 0;
+  left: -120px;
+  top: -80px;
+  /* Editable font styles */
+  font-size: 90px;
+  font-weight: 700;
+  font-style:italic;
+  color: #dae2f6;
+  direction: rtl; /* Hebrew */
+}
+
+.focal-text-time {
+  position: absolute;
+  left: -120px;
+  top: 15px;
+  
+  /* Editable font styles */
+  font-size: 40px;
+  font-weight: 700;
+  font-style:italic;
+  color: #dae2f6;
+}
+
+.focal-text-place {
+  position: absolute;
+  left: -120px;
+  top: 65px;
+  
+  /* Editable font styles */
+  font-size: 83px;
+  font-weight: 700;
+  font-style:italic;
+  color: #dae2f6;
+  direction: rtl; /* Hebrew */
+}
+
+/* site-header when positioned at the top of the viewport (no SponsorHeader) */
+.site-header.at-top {
   top: 0;
-  width: 484px; /* 691px * 0.7 */
-  height: 213px; /* 304px * 0.7 */
 }
 
-.time-image-wrapper {
-  position: absolute;
-  left: 0;
-  top: 227px; /* 325px * 0.7 */
-  width: 488px; /* 697px * 0.7 */
-  height: 132px; /* 188px * 0.7 */
-  background-color: #fe8d31;
-  border-radius: 26px; /* 38px * 0.7 */
-}
-
-.time-img {
-  position: absolute;
-  left: 21px; /* 30px * 0.7 */
-  top: 27px; /* 39px * 0.7 */
-  width: 442px; /* 631px * 0.7 */
-  height: 78px; /* 112px * 0.7 */
-  object-fit: contain;
-}
-
-.place-image-wrapper {
-  position: absolute;
-  left: 0;
-  top: 379px; /* 541px * 0.7 */
-  width: 484px; /* 691px * 0.7 */
-  height: 96px; /* 137px * 0.7 */
-  border: 1px solid #000000;
+/* ====================================================
+   "על החוברת" (Booklet Page) Section
+   ==================================================== */
+.booklet-page {
+  margin-top: 85px; /* Offset for Header */
+  min-height: calc(100vh - 85px);
+  background-color: #ff00dd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.booklet-container {
+  width: 1920px;
+  height: 1000px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+/* Left Section: Booklet Image Slider */
+.booklet-viewer-left {
+  position: relative;
+  width: 1001px;
+  height: 524px;
+}
+
+/* Arrow Buttons */
+.booklet-nav-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 89px;
+  height: 93px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  outline: none;
+}
+
+.booklet-nav-btn.left {
+  position: absolute;
+  left: 0;
+  top: 235px; /* 677 - 442 = 235px relative to wrapper top */
+}
+
+.booklet-nav-btn.right {
+  position: absolute;
+  left: 892px; /* 912 - 20 = 892px relative to wrapper left */
+  top: 235px;
+}
+
+.booklet-nav-btn:hover {
+  transform: scale(1.15);
+}
+
+.booklet-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.booklet-nav-btn svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Image Container */
+.booklet-img-container {
+  position: absolute;
+  left: 106px; /* 126 - 20 = 106px relative to wrapper left */
+  top: 0;
+  width: 778px;
+  height: 524px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booklet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none; /* Controlled by onLoad/onError in JS */
+}
+
+/* Booklet Placeholder */
+.booklet-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 3px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  user-select: none;
+}
+
+.placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.placeholder-title {
+  font-family: 'AlfaBravo', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #ffd65b;
+}
+
+.placeholder-subtitle {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  background: #ffffff;
+  color: #ff00dd;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+
+.placeholder-hint {
+  font-family: 'TheBasics', sans-serif;
+  font-size: 18px;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.placeholder-code {
+  font-family: monospace;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  direction: ltr;
+}
+
+/* Right Section: Quote & Description */
+.booklet-content-right {
+  position: relative;
+  width: 898px;
+  height: 837px; /* 952 (bottom) - 107 (top) = 845px approximate */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: right;
+  direction: rtl;
+}
+
+/* Quote/Headline */
+.booklet-quote {
+  font-family: 'Narkiss Block Condensed TRIAL', 'Levit', 'TheBasics', sans-serif;
+  font-size: 110px;
+  line-height: 90px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: right;
+  direction: rtl;
+  margin: 0 0 40px 0;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* Description Text */
+.booklet-description {
+  font-family: 'TheBasics', sans-serif;
+  font-size: 40px;
+  line-height: 41px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: right;
+  direction: rtl;
+  margin: 0;
+  word-break: break-word;
+}
+
+.booklet-description .highlight-text {
+  font-family: 'AlfaBravo', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Sizing scaling overrides for responsiveness on standard laptops */
+@media (max-width: 1920px) {
+  .booklet-container {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 1700px) {
+  .booklet-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 1500px) {
+  .booklet-container {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 1300px) {
+  .booklet-container {
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 1100px) {
+  .booklet-container {
+    transform: scale(0.5);
+  }
 }

@@ -1,6 +1,10 @@
-export default function Header() {
+interface HeaderProps {
+  atTop?: boolean;
+}
+
+export default function Header({ atTop = false }: HeaderProps) {
   return (
-    <header className="site-header">
+    <header className={`site-header ${atTop ? 'at-top' : ''}`}>
       <div className="header-content">
         <div className="header-left">
           <button className="register-btn">הרשמה חופשית</button>

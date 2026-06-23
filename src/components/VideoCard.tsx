@@ -2,20 +2,28 @@ import React, { useRef, useState } from 'react';
 
 interface VideoCardProps {
   src: string;
+  poster: string;
   style?: React.CSSProperties;
 }
 
-export default function VideoCard({ src, style }: VideoCardProps) {
+export default function VideoCard({ src, poster, style }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
     if (videoRef.current) {
-      // Play the video with sound
+      // Try to play with sound first
       videoRef.current.muted = false;
       videoRef.current.play().catch(error => {
-        console.warn("Video play failed (often due to browser autoplay policies):", error);
+        console.warn("Unmuted play blocked by browser, falling back to muted play:", error);
+        // Fallback: Play muted (which is always allowed by browsers without user interaction)
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(mutedError => {
+            console.error("Muted play also failed:", mutedError);
+          });
+        }
       });
     }
   };
@@ -41,6 +49,11 @@ export default function VideoCard({ src, style }: VideoCardProps) {
         loop
         playsInline
         className="video-element"
+      />
+      <img 
+        src={poster}
+        alt=""
+        className="video-poster"
       />
     </div>
   );

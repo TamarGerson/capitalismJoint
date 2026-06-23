@@ -1,0 +1,44 @@
+[
+  {
+    "id": "fox",
+    "name": "Fox",
+    "src": "/assets/sponsors/fox.png",
+    "scale": 0.5
+  },
+  {
+    "id": "laline",
+    "name": "Laline",
+    "src": "/assets/sponsors/Laline.png",
+    "scale": 1.5
+  },
+  {
+    "id": "nike",
+    "name": "Nike",
+    "src": "/assets/sponsors/NIKE.png",
+    "scale": 0.8
+  },
+  {
+    "id": "americaneagle",
+    "name": "American Eagle",
+    "src": "/assets/sponsors/americanEagle.png",
+    "scale": 0.5
+  },
+  {
+    "id": "bilabong",
+    "name": "Billabong",
+    "src": "/assets/sponsors/bilabong.png",
+    "scale": 1.1
+  },
+  {
+    "id": "footlocker",
+    "name": "Foot Locker",
+    "src": "/assets/sponsors/footLocker.svg",
+    "scale": 1.2
+  },
+  {
+    "id": "big",
+    "name": "Big Fashion",
+    "src": "/assets/sponsors/big.png",
+    "scale": 1.3
+  }
+]

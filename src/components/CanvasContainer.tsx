@@ -63,7 +63,7 @@ export default function CanvasContainer({
 
   // Global mousemove listener for edge scrolling
   useEffect(() => {
-    const EDGE_ZONE = 80; // Distance in pixels from viewport edge to start scrolling
+    const EDGE_ZONE = 200; // Distance in pixels from viewport edge to start scrolling (increased for easier trigger)
     const MAX_SPEED = 20;  // Maximum scroll speed in pixels per frame
 
     const handleGlobalMouseMove = (e: MouseEvent) => {
