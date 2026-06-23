@@ -1,5 +1,5 @@
 {
-  "totalSpawnCount": 25,
+  "totalSpawnCount": 40,
   "videoSources": [
     "/assets/videos/vid1.mp4",
     "/assets/videos/vid2.mp4",
@@ -25,6 +25,7 @@
     "/assets/videos/vid22.mp4",
     "/assets/videos/vid23.mp4",
     "/assets/videos/vid24.mp4",
-    "/assets/videos/vid25.mp4"
+    "/assets/videos/vid25.mp4",
+    "/assets/videos/vid26.mp4"
   ]
 }
