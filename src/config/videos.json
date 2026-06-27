@@ -1,109 +1,31 @@
 {
-  "totalSpawnCount": 60,
+  "totalSpawnCount": 70,
   "videoSources": [
-    {
-      "video": "/assets/videos/vid1.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid2.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    },
-    {
-      "video": "/assets/videos/vid3.mp4",
-      "poster": "/assets/mainPageImages/odeya1.png"
-    },
-    {
-      "video": "/assets/videos/vid4.mp4",
-      "poster": "/assets/mainPageImages/odeya2.png"
-    },
-    {
-      "video": "/assets/videos/vid5.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid6.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    },
-    {
-      "video": "/assets/videos/vid7.mp4",
-      "poster": "/assets/mainPageImages/odeya1.png"
-    },
-    {
-      "video": "/assets/videos/vid8.mp4",
-      "poster": "/assets/mainPageImages/odeya2.png"
-    },
-    {
-      "video": "/assets/videos/vid9.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid10.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    },
-    {
-      "video": "/assets/videos/vid11.mp4",
-      "poster": "/assets/mainPageImages/odeya1.png"
-    },
-    {
-      "video": "/assets/videos/vid12.mp4",
-      "poster": "/assets/mainPageImages/odeya2.png"
-    },
-    {
-      "video": "/assets/videos/vid13.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid14.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    },
-    {
-      "video": "/assets/videos/vid15.mp4",
-      "poster": "/assets/mainPageImages/odeya1.png"
-    },
-    {
-      "video": "/assets/videos/vid16.mp4",
-      "poster": "/assets/mainPageImages/odeya2.png"
-    },
-    {
-      "video": "/assets/videos/vid17.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid18.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    },
-    {
-      "video": "/assets/videos/vid19.mp4",
-      "poster": "/assets/mainPageImages/odeya1.png"
-    },
-    {
-      "video": "/assets/videos/vid20.mp4",
-      "poster": "/assets/mainPageImages/odeya2.png"
-    },
-    {
-      "video": "/assets/videos/vid21.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid22.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    },
-    {
-      "video": "/assets/videos/vid23.mp4",
-      "poster": "/assets/mainPageImages/odeya1.png"
-    },
-    {
-      "video": "/assets/videos/vid24.mp4",
-      "poster": "/assets/mainPageImages/odeya2.png"
-    },
-    {
-      "video": "/assets/videos/vid25.mp4",
-      "poster": "/assets/mainPageImages/einav1.png"
-    },
-    {
-      "video": "/assets/videos/vid26.mp4",
-      "poster": "/assets/mainPageImages/livnat1.png"
-    }
+    { "video": "/assets/videos/vid1.mp4" },
+    { "video": "/assets/videos/vid2.mp4" },
+    { "video": "/assets/videos/vid3.mp4" },
+    { "video": "/assets/videos/vid4.mp4" },
+    { "video": "/assets/videos/vid5.mp4" },
+    { "video": "/assets/videos/vid6.mp4" },
+    { "video": "/assets/videos/vid7.mp4" },
+    { "video": "/assets/videos/vid8.mp4" },
+    { "video": "/assets/videos/vid9.mp4" },
+    { "video": "/assets/videos/vid10.mp4" },
+    { "video": "/assets/videos/vid11.mp4" },
+    { "video": "/assets/videos/vid12.mp4" },
+    { "video": "/assets/videos/vid13.mp4" },
+    { "video": "/assets/videos/vid14.mp4" },
+    { "video": "/assets/videos/vid15.mp4" },
+    { "video": "/assets/videos/vid16.mp4" },
+    { "video": "/assets/videos/vid17.mp4" },
+    { "video": "/assets/videos/vid18.mp4" },
+    { "video": "/assets/videos/vid19.mp4" },
+    { "video": "/assets/videos/vid20.mp4" },
+    { "video": "/assets/videos/vid21.mp4" },
+    { "video": "/assets/videos/vid22.mp4" },
+    { "video": "/assets/videos/vid23.mp4" },
+    { "video": "/assets/videos/vid24.mp4" },
+    { "video": "/assets/videos/vid25.mp4" },
+    { "video": "/assets/videos/vid26.mp4" }
   ]
 }

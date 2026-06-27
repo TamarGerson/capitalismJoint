@@ -3,7 +3,7 @@
     "id": "fox",
     "name": "Fox",
     "src": "/assets/sponsors/fox.png",
-    "scale": 0.5
+    "scale": 0.7
   },
   {
     "id": "laline",
@@ -21,13 +21,13 @@
     "id": "americaneagle",
     "name": "American Eagle",
     "src": "/assets/sponsors/americanEagle.png",
-    "scale": 0.5
+    "scale": 0.6
   },
   {
     "id": "bilabong",
     "name": "Billabong",
     "src": "/assets/sponsors/bilabong.png",
-    "scale": 1.1
+    "scale": 1.3
   },
   {
     "id": "footlocker",
@@ -40,5 +40,53 @@
     "name": "Big Fashion",
     "src": "/assets/sponsors/big.png",
     "scale": 1.3
+  },
+  {
+    "id": "alm",
+    "name": "alm",
+    "src": "/assets/sponsors/alm.png",
+    "scale": 1.5
+  },
+  {
+    "id": "burgersBar",
+    "name": "burgersBar",
+    "src": "/assets/sponsors/burgersBar.jpg",
+    "scale": 1.5
+  },
+  {
+    "id": "golf",
+    "name": "golf",
+    "src": "/assets/sponsors/golf.png",
+    "scale": 0.8
+  },
+  {
+    "id": "greg",
+    "name": "greg",
+    "src": "/assets/sponsors/greg.png",
+    "scale": 2
+  },
+  {
+    "id": "roladin",
+    "name": "roladin",
+    "src": "/assets/sponsors/roladin.png",
+    "scale": 1
+  },
+  {
+    "id": "story",
+    "name": "story",
+    "src": "/assets/sponsors/story.png",
+    "scale": 1
+  },
+  {
+    "id": "twenty",
+    "name": "twenty",
+    "src": "/assets/sponsors/twenty.png",
+    "scale": 1.1
+  },
+  {
+    "id": "weShoes",
+    "name": "weShoes",
+    "src": "/assets/sponsors/weShoes.png",
+    "scale": 0.8
   }
 ]

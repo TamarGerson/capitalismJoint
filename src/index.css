@@ -145,7 +145,6 @@
   font-style: italic;
 }
 
-/* Load Custom Font: Narkiss Block Condensed TRIAL */
 @font-face {
   font-family: 'Narkiss Block Condensed TRIAL';
   src: url('./assets/fonts/NarkissBlockCondensedTRIAL-Hairline.otf') format('opentype');
@@ -207,7 +206,6 @@
   font-style: normal;
 }
 
-/* Load Custom Font: Narkiss Block TRIAL */
 @font-face {
   font-family: 'Narkiss Block TRIAL';
   src: url('./assets/fonts/NarkissBlockTRIAL-Thin.otf') format('opentype');
@@ -219,7 +217,7 @@ body {
   margin: 0;
   padding: 0;
   /* background-color: #f901b3; Primary background color from Figma design */
-  background-color: #ff00dd;
+  background-color: #fcf6f6;
   color: #ffffff;
   /* Use your custom font here as the first choice, fallback to sans-serif */
   font-family: 'TheBasics', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -263,28 +261,49 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 85px;
-  background-color: #dae2f6;
+  height: 55px;
+  background-color: #ffffff;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
-.sponsor-logos-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.sponsor-marquee-wrapper {
+  overflow: hidden;
   width: 100%;
   max-width: 1920px;
-  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  direction: ltr; /* Force LTR for marquee scroll predictability */
+  position: relative;
+  /* Visual gradient fade on edges for premium design look */
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.sponsor-logos-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-speed, 25s) linear infinite;
+}
+
+.sponsor-logos-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 80px; /* Space between logo items */
+  padding-right: 80px; /* Trailing space equal to gap for seamless loop */
+  flex-shrink: 0;
 }
 
 .sponsor-logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .sponsor-fallback-label {
@@ -297,7 +316,17 @@ body {
   padding: 4px 12px;
   border-radius: 6px;
   border: 1px dashed rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
   user-select: none;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ====================================================
@@ -305,42 +334,99 @@ body {
    =================================================== */
 .site-header {
   position: fixed;
-  top: 85px; /* Positioned below the 85px sponsor header */
+  top: 55px; /* Positioned below the 55px sponsor header */
   left: 0;
   width: 100%;
   height: 85px; 
-  background-color: #e6ea72;
+  background-color: #ee3129;
   z-index: 10; /* Z-Index 10: Foreground */
   display: flex;
   align-items: center;
   justify-content: center;
+  direction: rtl; /* Use RTL layout for Hebrew content */
 }
 
 .header-content {
-  position: relative; /* Act as anchor for absolute centered title */
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 1920px; /* Match the base viewport width */
   padding: 0 40px;
+  gap: 20px; /* Prevent items from touching each other */
 }
 
-.header-left {
+.header-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-title-link {
+  text-decoration: none;
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: 25px; 
+  margin: 0;
+  font-weight: bold;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease-in-out;
+}
+
+.header-title-link:hover .header-title {
+  color: #670404; /* Orange accent on hover */
+}
+
+.header-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
+  flex-shrink: 0;
+}
+
+.nav-link {
+  color: #ffffff;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #670404; /* Orange accent on hover */
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-shrink: 0;
+}
+
+.header-date {
+  color: #ffffff;
+  font-weight: normal;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .register-btn {
   background: transparent;
-  border: 1px solid #ec00a5;
+  border: 1px solid #ffffff;
   border-radius: 10px;
-  padding: 6px 15px;
+  padding: 7px 15px;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: normal;
-  color: #ec00a5;
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -351,55 +437,63 @@ body {
 }
 
 .register-btn:hover {
-  background-color: #ec00a5;
-  color: #FCCD8E;
+  background-color: #ffffff;
+  color: #ee3129;
 }
 
-.header-date {
-  color: #ec00a5;
-  font-size: 18px; /* Scaled down from 25px */
-  font-weight: normal;
-  line-height: 1;
-  white-space: nowrap; /* Prevent date text wrapping to two lines */
+/* Responsive Header adjustments */
+@media (max-width: 1400px) {
+  .header-title {
+    font-size: 25px;
+  }
+  .nav-link {
+    font-size: 20px;
+  }
+  .header-date {
+    font-size: 20px;
+  }
+  .header-nav {
+    gap: 20px;
+  }
 }
 
-.header-center {
-  position: absolute;
-  left:54%; /* Shifted left from 50% to prevent overlap with the date text */
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none; /* Let hover/drag events pass through the title area background */
+@media (max-width: 1100px) {
+  .header-title {
+    font-size: 17px;
+  }
+  .nav-link {
+    font-size: 15px;
+  }
+  .header-date {
+    font-size: 14px;
+  }
+  .header-content {
+    gap: 12px;
+    padding: 0 20px;
+  }
+  .header-nav {
+    gap: 15px;
+  }
 }
 
-.header-title {
-  color: #ec00a5;
-  font-size: 22px; /* Scaled down from 30px */
-  margin: 0;
-  font-weight: 500; /* Fixed invalid 'medium' value to numeric 500 */
-  line-height: 1;
-  white-space: nowrap; /* Prevent title wrapping */
+@media (max-width: 850px) {
+  /* Hide the date on narrower screens to fit title, nav and button */
+  .header-date {
+    display: none;
+  }
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-link {
-  color: #d90a9b;
-  font-size: 22px; /* Scaled down from 30px */
-  font-weight: normal; /* Add customizable font weight */
-  text-decoration: none;
-  line-height: 1;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-link:hover {
-  color: #fe8d31; /* Orange accent on hover */
+@media (max-width: 650px) {
+  .header-title {
+    font-size: 14px;
+  }
+  .nav-link {
+    font-size: 13px;
+  }
+  .header-content {
+    padding: 0 10px;
+    gap: 8px;
+  }
 }
 
 /* ====================================================
@@ -468,8 +562,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffd65b; /* <-- Change this to the exact color you want for the wash! */
-  mix-blend-mode: screen;     /* <-- Play with: color, multiply, screen, overlay, or hue */
+  background-color: #ee3129; /* <-- Change this to the exact color you want for the wash! */
   pointer-events: none;
   
   /* Mask using the same PNG image so the color only applies to opaque pixels */
@@ -483,94 +576,27 @@ body {
   mask-position: center;
 }
 
-/* Date and Time Container & Inner Items (Scaled by 0.7x) */
-.date-time-container {
-  position: absolute;
-  width: 488px; /* 697px * 0.7 */
-  height: 475px; /* 678px * 0.7 */
-}
-
-/* Date, Time and Place Focal Text components */
-.focal-text {
-  font-family: 'AlfaBravo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  white-space: nowrap; /* Prevents text from wrapping to a new line */
-  user-select: none;
-}
-
-.focal-text-date {
-  position: absolute;
-  left: -120px;
-  top: -80px;
-  /* Editable font styles */
-  font-size: 90px;
-  font-weight: 700;
-  font-style:italic;
-  color: #dae2f6;
-  direction: rtl; /* Hebrew */
-}
-
-.focal-text-time {
-  position: absolute;
-  left: -120px;
-  top: 15px;
-  
-  /* Editable font styles */
-  font-size: 40px;
-  font-weight: 700;
-  font-style:italic;
-  color: #dae2f6;
-}
-
-.focal-text-place {
-  position: absolute;
-  left: -120px;
-  top: 65px;
-  
-  /* Editable font styles */
-  font-size: 83px;
-  font-weight: 700;
-  font-style:italic;
-  color: #dae2f6;
-  direction: rtl; /* Hebrew */
-}
-
-/* site-header when positioned at the top of the viewport (no SponsorHeader) */
-.site-header.at-top {
-  top: 0;
-}
-
 /* ====================================================
-   "על החוברת" (Booklet Page) Section
+    (Booklet Page) Section
    ==================================================== */
 .booklet-page {
-  margin-top: 85px; /* Offset for Header */
-  min-height: calc(100vh - 85px);
-  background-color: #ff00dd;
+  margin-top: 140px; /* Offset for Header (55px SponsorHeader + 85px Header) */
+  height: calc(100vh - 140px);
+  background-color: #ffffff;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align to top of viewport */
   justify-content: center;
   box-sizing: border-box;
-  padding: 40px;
   overflow: hidden;
+  position: relative;
 }
 
 .booklet-container {
   width: 1920px;
-  height: 1000px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  transition: transform 0.2s ease-in-out;
-  flex-shrink: 0;
-}
-
-/* Left Section: Booklet Image Slider */
-.booklet-viewer-left {
+  height: 1200px;
   position: relative;
-  width: 1001px;
-  height: 524px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 /* Arrow Buttons */
@@ -586,18 +612,19 @@ body {
   height: 93px;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   outline: none;
+  z-index: 5;
 }
 
 .booklet-nav-btn.left {
   position: absolute;
-  left: 0;
-  top: 235px; /* 677 - 442 = 235px relative to wrapper top */
+  left: 20px;
+  top: 677px;
 }
 
 .booklet-nav-btn.right {
   position: absolute;
-  left: 892px; /* 912 - 20 = 892px relative to wrapper left */
-  top: 235px;
+  left: 912px;
+  top: 677px;
 }
 
 .booklet-nav-btn:hover {
@@ -617,8 +644,8 @@ body {
 /* Image Container */
 .booklet-img-container {
   position: absolute;
-  left: 106px; /* 126 - 20 = 106px relative to wrapper left */
-  top: 0;
+  left: 126px;
+  top: 442px;
   width: 778px;
   height: 524px;
   background-color: rgba(255, 255, 255, 0.05);
@@ -697,40 +724,37 @@ body {
   direction: ltr;
 }
 
-/* Right Section: Quote & Description */
-.booklet-content-right {
-  position: relative;
-  width: 898px;
-  height: 837px; /* 952 (bottom) - 107 (top) = 845px approximate */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-  text-align: right;
-  direction: rtl;
-}
-
 /* Quote/Headline */
 .booklet-quote {
+  position: absolute;
+  left: 889px;
+  top: 107px;
+  width: 898px;
+  height: 411px;
   font-family: 'Narkiss Block Condensed TRIAL', 'Levit', 'TheBasics', sans-serif;
   font-size: 110px;
   line-height: 90px;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
   text-align: right;
   direction: rtl;
-  margin: 0 0 40px 0;
+  margin: 0;
   white-space: pre-line;
   word-break: break-word;
 }
 
 /* Description Text */
 .booklet-description {
+  position: absolute;
+  left: 1027px;
+  top: 427px;
+  width: 755px;
+  height: 517px;
   font-family: 'TheBasics', sans-serif;
   font-size: 40px;
   line-height: 41px;
   font-weight: 400;
-  color: #ffffff;
+  color: #000000;
   text-align: right;
   direction: rtl;
   margin: 0;
@@ -743,33 +767,69 @@ body {
   font-style: italic;
 }
 
-/* Sizing scaling overrides for responsiveness on standard laptops */
-@media (max-width: 1920px) {
-  .booklet-container {
-    transform: scale(0.9);
-  }
+/* ====================================================
+     (About Page) Section
+   ==================================================== */
+.about-page {
+  margin-top: 140px; /* Offset for Header (55px SponsorHeader + 85px Header) */
+  height: calc(100vh - 140px);
+  background-color: #ffffff; /* Solid magenta from design */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
-@media (max-width: 1700px) {
-  .booklet-container {
-    transform: scale(0.8);
-  }
+.about-container {
+  width: 1920px;
+  height: 1200px;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-@media (max-width: 1500px) {
-  .booklet-container {
-    transform: scale(0.7);
-  }
+.about-quote {
+  position: absolute;
+  right: 122px; /* 1920px - 1798px = 122px */
+  top: 94px;
+  width: 851px;
+  height: 487px;
+  font-family: 'Narkiss Block Condensed TRIAL', 'Levit', 'TheBasics', sans-serif;
+  font-size: 95px;
+  line-height: 80px;
+  font-weight: 400;
+  color: #000000;
+  text-align: right;
+  direction: rtl;
+  margin: 0;
+  white-space: pre-line;
+  word-break: break-word;
 }
 
-@media (max-width: 1300px) {
-  .booklet-container {
-    transform: scale(0.6);
-  }
+.about-description {
+  position: absolute;
+  right: 122px; /* 1920px - 1798px = 122px */
+  top: 581px;
+  width: 679px;
+  height: 643px;
+  font-family: 'TheBasics', sans-serif;
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 400;
+  color: #000000;
+  text-align: right;
+  direction: rtl;
+  margin: 0;
+  word-break: break-word;
 }
 
-@media (max-width: 1100px) {
-  .booklet-container {
-    transform: scale(0.5);
-  }
+.about-description p {
+  margin: 0 0 24px 0;
+  direction: rtl;
+}
+
+.about-description p:last-child {
+  margin-bottom: 0;
 }

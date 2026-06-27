@@ -2,11 +2,10 @@ import React, { useRef, useState } from 'react';
 
 interface VideoCardProps {
   src: string;
-  poster: string;
   style?: React.CSSProperties;
 }
 
-export default function VideoCard({ src, poster, style }: VideoCardProps) {
+export default function VideoCard({ src, style }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -48,12 +47,8 @@ export default function VideoCard({ src, poster, style }: VideoCardProps) {
         src={src}
         loop
         playsInline
+        preload="auto"
         className="video-element"
-      />
-      <img 
-        src={poster}
-        alt=""
-        className="video-poster"
       />
     </div>
   );

@@ -14,15 +14,19 @@ interface SponsorLogoProps {
   sponsor: Sponsor;
 }
 
+interface SponsorHeaderProps {
+  speed?: number; // Speed in seconds, defaults to 30
+}
+
 function SponsorLogo({ sponsor }: SponsorLogoProps) {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const scale = sponsor.scale ?? 1.0;
   const style: React.CSSProperties = {
-    height: sponsor.height ?? `${45 * scale}px`,
+    height: sponsor.height ?? `${30 * scale}px`,
     width: sponsor.width ?? 'auto',
-    maxHeight: '65px', // Ensure logos stay within the 85px header height bounds
+    maxHeight: '40px', // Ensure logos stay within the 55px header height bounds
     objectFit: 'contain',
     display: hasError ? 'none' : 'block',
     transition: 'all 0.2s ease-in-out',
@@ -46,15 +50,28 @@ function SponsorLogo({ sponsor }: SponsorLogoProps) {
   );
 }
 
-export default function SponsorHeader() {
+export default function SponsorHeader({ speed = 30 }: SponsorHeaderProps) {
   const sponsors = sponsorsData as Sponsor[];
+  const marqueeSpeed = `${speed}s`;
 
   return (
     <header className="sponsor-header">
-      <div className="sponsor-logos-container">
-        {sponsors.map((sponsor) => (
-          <SponsorLogo key={sponsor.id} sponsor={sponsor} />
-        ))}
+      <div className="sponsor-marquee-wrapper">
+        <div 
+          className="sponsor-logos-track"
+          style={{ '--marquee-speed': marqueeSpeed } as React.CSSProperties}
+        >
+          <div className="sponsor-logos-group">
+            {sponsors.map((sponsor, index) => (
+              <SponsorLogo key={`${sponsor.id}-1-${index}`} sponsor={sponsor} />
+            ))}
+          </div>
+          <div className="sponsor-logos-group">
+            {sponsors.map((sponsor, index) => (
+              <SponsorLogo key={`${sponsor.id}-2-${index}`} sponsor={sponsor} />
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );
