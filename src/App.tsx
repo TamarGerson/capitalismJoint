@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import LandingPage from './views/LandingPage';
 import BookletPage from './views/BookletPage';
 import AboutPage from './views/AboutPage';
+import SchedulePage from './views/SchedulePage';
 
 function App() {
-  const [view, setView] = useState<'landing' | 'booklet' | 'about'>('landing');
+  const [view, setView] = useState<'landing' | 'booklet' | 'about' | 'schedule'>('landing');
 
   useEffect(() => {
     // Always reset the hash on fresh load/F5 refresh to default to the landing page
@@ -18,6 +19,8 @@ function App() {
         setView('booklet');
       } else if (hash === '#about') {
         setView('about');
+      } else if (hash === '#schedule') {
+        setView('schedule');
       } else {
         setView('landing');
       }
@@ -37,6 +40,8 @@ function App() {
         <BookletPage />
       ) : view === 'about' ? (
         <AboutPage />
+      ) : view === 'schedule' ? (
+        <SchedulePage />
       ) : (
         <LandingPage />
       )}

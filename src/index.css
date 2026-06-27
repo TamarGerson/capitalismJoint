@@ -352,7 +352,7 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1920px; /* Match the base viewport width */
-  padding: 0 40px;
+  padding: 40px;
   gap: 20px; /* Prevent items from touching each other */
 }
 
@@ -370,10 +370,11 @@ body {
 
 .header-title {
   color: #ffffff;
-  font-size: 25px; 
   margin: 0;
+  font-family: 'levit';
   font-weight: bold;
   line-height: 1.2;
+  letter-spacing: 0.5px; 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -444,7 +445,7 @@ body {
 /* Responsive Header adjustments */
 @media (max-width: 1400px) {
   .header-title {
-    font-size: 25px;
+    font-size: 35px;
   }
   .nav-link {
     font-size: 20px;
@@ -453,7 +454,7 @@ body {
     font-size: 20px;
   }
   .header-nav {
-    gap: 20px;
+    gap: 33px;
   }
 }
 
@@ -472,7 +473,7 @@ body {
     padding: 0 20px;
   }
   .header-nav {
-    gap: 15px;
+    gap: 35px;
   }
 }
 
@@ -735,7 +736,8 @@ body {
   word-break: break-word;
 }
 
-.booklet-description .highlight-text {
+.booklet-description .highlight-text,
+.about-description .highlight-text {
   font-family: 'AlfaBravo', sans-serif;
   font-weight: 600;
   font-style: italic;
@@ -841,4 +843,312 @@ body {
   /* box-shadow: 0 10px 30px rgba(0,0,0,0.5); */
   width: 100%;
   height: 100%;
+}
+
+/* ====================================================
+    (Schedule Page) Section
+   ==================================================== */
+.schedule-page {
+  background-color: #eff3f6; /* Matching background from Figma */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule-scroll-viewport {
+  margin-top: 140px; /* Offset for Header (55px SponsorHeader + 85px Header) */
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #eff3f6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.schedule-scale-wrapper {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.schedule-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -960px; /* Center 1920px container */
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Base styles for rows and columns */
+.schedule-row {
+  position: absolute;
+  direction: rtl; /* Use RTL layout for Hebrew content */
+  width: 1920px;
+}
+
+/* Row-specific top offsets */
+.schedule-row.row-1 {
+  top: 95px;
+  height: 250px;
+}
+
+.schedule-row.row-2 {
+  top: 350px;
+  height: 300px;
+}
+
+.schedule-row.row-3 {
+  top: 710px;
+  height: 300px;
+}
+
+.schedule-row.row-4 {
+  top: 1070px;
+  height: 300px;
+}
+
+.schedule-row.row-5 {
+  top: 1430px;
+  height: 370px; /* Extends to the bottom of the 1800px canvas */
+}
+
+/* Columns Positioning (RTL coordinate system based on 1920px canvas) */
+
+/* 1. Main Time Column (Pink) */
+.main-time-col {
+  position: absolute;
+  right: 33px; /* right edge is 1887px -> 1920 - 1887 = 33px */
+  width: 197px;
+  text-align: right;
+}
+
+.time-val {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 48px;
+  color: #ec008c; /* Pink color */
+  margin: 0;
+  line-height: 55px;
+}
+
+/* 2. Main Title Column */
+.main-item-col {
+  position: absolute;
+  right: 198px;
+  width: 350px;
+  text-align: right;
+}
+
+.main-item-title {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 48px;
+  color: #000000;
+  margin: 0 0 10px 0;
+  line-height: 1.1;
+}
+
+.main-item-subtitle {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 30px;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.row-1 .main-item-subtitle {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Row 1 Left Item */
+.left-item-col {
+  position: absolute;
+  right: 569px; /* right edge is 1351px -> 1920 - 1351 = 569px (aligned with right edge of image column) */
+  width: 550px;
+  text-align: right;
+}
+
+.left-item-title {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #000000;
+  margin: 0 0 10px 0;
+  line-height: 1.1;
+}
+
+.left-item-subtitle {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* 3. Image Column */
+.image-col {
+  position: absolute;
+  left: 1056px; /* left edge is 1056px, right edge is 1351px */
+  width: 295px;
+  height: 288px;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #d9d9d9;
+}
+
+/* 4. Sub-sessions Wrapper */
+.sub-sessions-wrapper {
+  position: absolute;
+  left: 66px; /* Occupies left boundary of descriptions (20px) */
+  right: 896px; /* right edge is 1024px -> 1920 - 1024 = 896px */
+  top: 0;
+  height: 100%;
+}
+
+.sub-session {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 90px;
+}
+
+/* Sub-session specific top offsets to align grid columns vertically */
+.row-2 .sub-session:nth-child(1) { top: 3px; }
+.row-2 .sub-session:nth-child(2) { top: 108px; }
+.row-2 .sub-session:nth-child(3) { top: 213px; }
+
+.row-3 .sub-session:nth-child(1) { top: 0px; }
+.row-3 .sub-session:nth-child(2) { top: 102px; }
+.row-3 .sub-session:nth-child(3) { top: 204px; }
+
+.row-4 .sub-session:nth-child(1) { top: 0px; }
+.row-4 .sub-session:nth-child(2) { top: 104px; }
+.row-4 .sub-session:nth-child(3) { top: 208px; }
+
+.sub-time {
+  position: absolute;
+  right: 0; /* Align right to 1024px edge */
+  width: 220px;
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: right;
+  line-height: 1;
+}
+
+.sub-content {
+  position: absolute;
+  right: 240px;
+  width: 335px;
+  text-align: right;
+}
+
+.speaker-name {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 900; /* Black font weight */
+  font-size: 35px;
+  color: #000000;
+  margin: 0;
+  line-height: 1;
+}
+
+.speaker-topic {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  color: #000000;
+  margin: 5px 0 0 0;
+  line-height: 1;
+}
+
+.sub-desc {
+  position: absolute;
+  right: 600px; /* Align right to 439px edge -> 1024 - 439 = 585px offset */
+  width: 390px; /* Expanded to reach left edge of 20px */
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #000000;
+  text-align: right;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Row 5 Bottom Details (For Wolf of Wall Street) */
+.row-5 .bottom-detail.special-bottom-detail {
+  position: absolute;
+  top: 180px;
+  right: 0;   
+  width: 351px;
+  text-align: right;
+}
+
+.row-5 .bottom-detail .speaker-name {
+  margin-bottom: 5px;
+}
+
+.row-5 .bottom-detail .sub-desc {
+  position: static;
+  width: 100%;
+  font-size: 25px;
+}
+
+/* Row 5 Left Side Special Section */
+.left-side-special-col {
+  position: absolute;
+  left: 20px; 
+  right: 896px; /* Aligns with right edge of sub-sessions column 1024px */
+  height: 288px;
+}
+
+.special-time-col {
+  position: absolute;
+  top: 0;
+  right: 0; /* right edge is 1024px */
+  width: 197px;
+  text-align: right;
+}
+
+.special-time-col .time-val {
+  font-family: 'TheBasics', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #ec008c;
+  margin: 0;
+  line-height: 55px;
+}
+
+.special-content-col {
+  position: absolute;
+  top: 0;
+  right: 176px; /* right edge is 848px -> 1024 - 848 = 176px */
+  left: 0; /* Align left edge of content column with the 20px boundary */
+  text-align: right;
+}
+
+.special-content-col .main-item-title {
+  margin: 0;
+}
+
+.special-content-col .main-item-subtitle {
+  font-size: 30px;
+  margin: 5px 0 15px 0;
+}
+
+.special-content-col .sub-desc {
+  position: absolute;
+  top: 185px; /* Aligned vertically with right side description */
+  right: auto; /* Reset inherited right offset so width works! */
+  width: 400px; 
+  font-size: 25px;
 }
