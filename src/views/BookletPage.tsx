@@ -1,17 +1,12 @@
 import { useState, useEffect, type MouseEvent } from 'react';
 import Header from '../components/Header';
 import SponsorHeader from '../components/SponsorHeader';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import bookletPages from '../config/booklet.json';
 
 export default function BookletPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [scale, setScale] = useState(1);
-
-  const bookletPages = [
-    '/assets/booklet.png',
-    '/assets/booklet-2.png',
-    '/assets/booklet-3.png',
-    '/assets/booklet-4.png',
-  ];
 
   const nextPage = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -40,6 +35,8 @@ export default function BookletPage() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const isSinglePage = currentPage === 0 || currentPage === bookletPages.length - 1;
+
   return (
     <div className="booklet-page">
       <SponsorHeader speed={40} />
@@ -55,70 +52,36 @@ export default function BookletPage() {
           flexShrink: 0
         }}
       >
-        {/* Quote */}
-        <h2 className="booklet-quote">
-          “תגידו אתם בסדר?
-          אחת כמוני מניעה
-          את הכלכלה בישראל”
-        </h2>
-
         {/* Description */}
         <p className="booklet-description">
-          החוברת <span className="highlight-text">קפיטליזם זו לא מילה גסה</span> מבקשת להתבונן בקפיטליזם כמנגנון שמאפשר לאנשים להפוך אישיות למנוע של השפעה, הצלחה וכסף. דרך דמויותיהן של <span className="highlight-text">אודיה פינטו, עינב בובליל וליבנת אורינובסקי</span>, נשים שמעוררות לא פעם זלזול, ביקורת או לגלוג ציבורי, החוברת מציעה מבט אחר: כזה שרואה בהן לא רק תופעת רשת, אלא יזמיות של עצמן. כל אחת מהן הצליחה לבנות קהל ולהפוך את הנוכחות האישית שלה למותג בעל כוח כלכלי ממשי. זהו מבט על קפיטליזם ככוח שמייצר אפשרות: האפשרות לקחת את האישיות ולהפוך אותה להשפעה רחבה, עצמאות כלכלית ומעמד תרבותי.
+          החוברת <span className="highlight-text">קפיטליזם זו לא מילה גסה</span> מבקשת להתבונן בקפיטליזם כמנגנון שמאפשר לאנשים להפוך אישיות למנוע של השפעה, הצלחה וכסף. דרך דמויותיהן של <span className="highlight-text">אודיה פינטו, עינב בובליל וליבנת אורינובסקי</span>, נשים שמעוררות לא פעם זלזול, ביקורת או לגלוג ציבורי, החוברת מציעה מבט אחר: כזה שרואה בהן לא רק תופעת רשת, אלא יזמיות של עצמן. כל אחת מהן הצליחה לבנות קהל ולהפוך את הנוכחות האישית שלה למותג בעל כוח כלכלי ממשי. זהו מבט על קפיטליזם ככוח שמייצר אפשרות: האפשרות לקחת אישיות ולהפוך אותה להשפעה רחבה, עצמאות כלכלית ומעמד חברתי.
         </p>
 
-        {/* Left Arrow Button */}
+        {/* Left Arrow Button (Next Page for RTL) */}
         <button 
           className="booklet-nav-btn left" 
-          onClick={prevPage}
-          aria-label="העמוד הקודם בחוברת"
+          onClick={nextPage}
+          aria-label="Next page"
         >
-          <svg width="89" height="93" viewBox="0 0 89 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M89 0 L0 46.5 L89 93 Z" fill="white"/>
-          </svg>
+          <ChevronLeft className="arrow-icon" size={64} />
         </button>
 
         {/* Booklet Image Container */}
-        <div className="booklet-img-container">
+        <div className={`booklet-img-container ${isSinglePage ? 'single-page-layout' : ''}`}>
           <img 
             src={bookletPages[currentPage]} 
-            alt={`עמוד ${currentPage + 1} בחוברת`} 
-            className="booklet-img"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              const placeholder = e.currentTarget.parentElement?.querySelector('.booklet-placeholder');
-              if (placeholder) {
-                (placeholder as HTMLElement).style.display = 'flex';
-              }
-            }}
-            onLoad={(e) => {
-              e.currentTarget.style.display = 'block';
-              const placeholder = e.currentTarget.parentElement?.querySelector('.booklet-placeholder');
-              if (placeholder) {
-                (placeholder as HTMLElement).style.display = 'none';
-              }
-            }}
+            alt={`Booklet page ${currentPage + 1}`} 
+            className={`booklet-img ${isSinglePage ? 'single-page' : ''}`}
           />
-          
-          <div className="booklet-placeholder">
-            <div className="placeholder-content">
-              <span className="placeholder-title">תמונת החוברת</span>
-              <span className="placeholder-subtitle">עמוד {currentPage + 1}</span>
-              <span className="placeholder-hint">הכניסו קובץ תמונה בנתיב:</span>
-              <code className="placeholder-code">public/assets/booklet{currentPage > 0 ? `-${currentPage + 1}` : ''}.png</code>
-            </div>
-          </div>
         </div>
 
-        {/* Right Arrow Button */}
+        {/* Right Arrow Button (Previous Page for RTL) */}
         <button 
           className="booklet-nav-btn right" 
-          onClick={nextPage}
-          aria-label="העמוד הבא בחוברת"
+          onClick={prevPage}
+          aria-label="Previous page"
         >
-          <svg width="89" height="93" viewBox="0 0 89 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0 L89 46.5 L0 93 Z" fill="white"/>
-          </svg>
+          <ChevronRight className="arrow-icon" size={64} />
         </button>
       </div>
     </div>

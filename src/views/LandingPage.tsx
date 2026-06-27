@@ -169,7 +169,7 @@ export default function LandingPage() {
  
   return (
     <div className="landing-page">
-      <SponsorHeader />
+      <SponsorHeader speed={40} />
       <Header />
       
       <CanvasContainer 

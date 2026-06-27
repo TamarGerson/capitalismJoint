@@ -582,7 +582,7 @@ body {
 .booklet-page {
   margin-top: 140px; /* Offset for Header (55px SponsorHeader + 85px Header) */
   height: calc(100vh - 140px);
-  background-color: #ffffff;
+  background-color: #1e1e1e;
   display: flex;
   align-items: flex-start; /* Align to top of viewport */
   justify-content: center;
@@ -591,12 +591,49 @@ body {
   position: relative;
 }
 
+.booklet-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/haulBackround.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .booklet-container {
   width: 1920px;
   height: 1200px;
   position: relative;
   box-sizing: border-box;
   flex-shrink: 0;
+  z-index: 1;
+
+  /* ====================================================
+     SCALE PARAMETER - Adjust this value to scale the booklet!
+     1.0 = Original size (778px x 524px)
+     1.25 = 25% larger (972px x 655px)
+     ==================================================== */
+  --booklet-scale: 1.5;
+
+  /* Base reference layout measurements */
+  --base-width: 778px;
+  --base-height: 524px;
+  --base-left: 20px;
+  --base-top: 160px;
+
+  /* Calculated dynamic dimensions */
+  --booklet-width: calc(var(--base-width) * var(--booklet-scale));
+  --booklet-height: calc(var(--base-height) * var(--booklet-scale));
+  
+  /* Shift left position horizontally to keep layout balanced as size increases */
+  --booklet-left: calc(var(--base-left) - (var(--booklet-width) - var(--base-width)) * 0.24);
+  
+  /* Dynamic vertical alignment for arrow buttons based on booklet height */
+  --booklet-vertical-center: calc(var(--base-top) + var(--booklet-height) / 2);
 }
 
 /* Arrow Buttons */
@@ -617,14 +654,14 @@ body {
 
 .booklet-nav-btn.left {
   position: absolute;
-  left: 20px;
-  top: 677px;
+  left: calc(var(--booklet-left) - 95px);
+  top: calc(var(--booklet-vertical-center) - 46.5px);
 }
 
 .booklet-nav-btn.right {
   position: absolute;
-  left: 912px;
-  top: 677px;
+  left: calc(var(--booklet-left) + var(--booklet-width) + 12px);
+  top: calc(var(--booklet-vertical-center) - 46.5px);
 }
 
 .booklet-nav-btn:hover {
@@ -644,10 +681,10 @@ body {
 /* Image Container */
 .booklet-img-container {
   position: absolute;
-  left: 126px;
-  top: 442px;
-  width: 778px;
-  height: 524px;
+  left: var(--booklet-left);
+  top: var(--base-top);
+  width: var(--booklet-width);
+  height: var(--booklet-height);
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   overflow: hidden;
@@ -655,106 +692,43 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booklet-img-container.single-page-layout {
+  width: calc(var(--booklet-width) / 2);
 }
 
 .booklet-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none; /* Controlled by onLoad/onError in JS */
+  display: block;
 }
 
-/* Booklet Placeholder */
-.booklet-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border: 3px dashed rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  color: #ffffff;
-  user-select: none;
-}
-
-.placeholder-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.placeholder-title {
-  font-family: 'AlfaBravo', sans-serif;
-  font-weight: 700;
-  font-size: 32px;
-  color: #ffd65b;
-}
-
-.placeholder-subtitle {
-  font-family: 'TheBasics', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  background: #ffffff;
-  color: #ff00dd;
-  padding: 4px 16px;
-  border-radius: 20px;
-}
-
-.placeholder-hint {
-  font-family: 'TheBasics', sans-serif;
-  font-size: 18px;
-  opacity: 0.8;
-  margin-top: 10px;
-}
-
-.placeholder-code {
-  font-family: monospace;
-  font-size: 16px;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 6px 12px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  direction: ltr;
-}
-
-/* Quote/Headline */
-.booklet-quote {
-  position: absolute;
-  left: 889px;
-  top: 107px;
-  width: 898px;
-  height: 411px;
-  font-family: 'Narkiss Block Condensed TRIAL', 'Levit', 'TheBasics', sans-serif;
-  font-size: 110px;
-  line-height: 90px;
-  font-weight: 700;
+.booklet-nav-btn svg {
   color: #000000;
-  text-align: right;
-  direction: rtl;
-  margin: 0;
-  white-space: pre-line;
-  word-break: break-word;
+  stroke-width: 1.5px;
+  transition: color 0.2s ease-in-out, stroke-width 0.2s ease-in-out;
+}
+
+.booklet-nav-btn:hover svg {
+  color: #ff00bb;
+  stroke-width: 2px;
 }
 
 /* Description Text */
 .booklet-description {
   position: absolute;
-  left: 1027px;
-  top: 427px;
-  width: 755px;
+  left: 1250px;
+  top: 555px;
+  width: 785px;
   height: 517px;
   font-family: 'TheBasics', sans-serif;
-  font-size: 40px;
-  line-height: 41px;
+  font-size: 33px;
+  line-height: 39px;
   font-weight: 400;
-  color: #000000;
+  color: #ffffff;
   text-align: right;
   direction: rtl;
   margin: 0;
@@ -763,8 +737,9 @@ body {
 
 .booklet-description .highlight-text {
   font-family: 'AlfaBravo', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-style: italic;
+  color: #ff00bb;
 }
 
 /* ====================================================
@@ -780,6 +755,33 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
+
+  /* ====================================================
+     BACKGROUND IMAGE CONFIGURATION
+     --bg-scale: Scale factor (e.g., 1.1, 1.25)
+     --bg-x: Horizontal translation offset (e.g., 50px, -20px)
+     --bg-y: Vertical translation offset (e.g., -30px, 10px)
+     ==================================================== */
+  --bg-scale: 1.3;
+  --bg-x: 0px;
+  --bg-y: 50px;
+}
+
+.about-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/goldIphones.avif');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2; /* 20% opacity */
+  z-index: 0;
+  pointer-events: none;
+
+  /* Apply scale and translation shift */
+  transform: scale(var(--bg-scale)) translate(var(--bg-x), var(--bg-y));
+  transform-origin: center center;
 }
 
 .about-container {
@@ -788,12 +790,13 @@ body {
   position: relative;
   box-sizing: border-box;
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .about-description {
   position: absolute;
   right: -105px;
-  top:215px;
+  top:235px;
   width: 780px;
   height: auto;
   font-family: 'TheBasics', sans-serif;

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SponsorHeader from '../components/SponsorHeader';
-import AutoplayVideo from '../components/AutoplayVideo';
 import VideoCard from '../components/VideoCard';
 
 export default function AboutPage() {
@@ -47,7 +46,7 @@ export default function AboutPage() {
         {/* Description paragraphs */}
         <div className="about-description">
           <p>
-            {`אם בעבר הקפיטליזם הופיע בדמות מפעל או גורד שחקים - היום הוא מופיע בפרופיל האישי. בעולם של הסטורי ויצירת התוכן לייקים ושיתופים הם העדות להצלחה. האנשים החדשים יכולים להוות ערוצי הפצה או  מוצר לכל דבר ועניין. השוק החדש הוא במה - ואנחנו השחקנים הראשיים.`}
+            {`אם בעבר הקפיטליזם הופיע בדמות מפעל או גורד שחקים - היום הוא מופיע בפרופיל האישי. בעולם של הסטורי ויצירת התוכן לייקים ושיתופים הם העדות להצלחה. האנשים החדשים הם ערוצי הפצה או  מוצר לכל דבר ועניין. השוק החדש הוא במה - ואנחנו השחקנים הראשיים.`}
           </p>
           <p>
             {`בעידן שבו גם האישיות היא נכס, גם אותנטיות יכולה להיות אסטרטגיה שיווקית:  הפנים, הבית, הזוגיות או שגרת הבוקר - כולם נעשים חומרי גלם במערכת שבה תשומת לב היא מטבע, והעצמי הופך לפרויקט מתמשך של עיצוב, ניהול ומכירה.`}
