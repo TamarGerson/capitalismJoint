@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SponsorHeader from '../components/SponsorHeader';
+import AutoplayVideo from '../components/AutoplayVideo';
 import VideoCard from '../components/VideoCard';
 
 export default function AboutPage() {

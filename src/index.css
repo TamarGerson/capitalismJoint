@@ -792,13 +792,13 @@ body {
 
 .about-description {
   position: absolute;
-  right: -40px;
-  top: 150px;
+  right: -105px;
+  top:215px;
   width: 780px;
   height: auto;
   font-family: 'TheBasics', sans-serif;
-  font-size: 38px;
-  line-height: 44px;
+  font-size: 34px;
+  line-height: 41px;
   font-weight: normal;
   color: #000000;
   text-align: right;
@@ -818,19 +818,24 @@ body {
 
 .about-video-wrapper {
   position: absolute;
-  left: -100px;
-  top: 375px; /* Centered vertically: (1200px container height - 450px video height) / 2 */
+  left: -125px;
+  top: 350px; /* Centered vertically: (1200px container height - 450px video height) / 2 */
   width: 800px;
   height: 450px; /* 16:9 aspect ratio */
   z-index: 2;
+  opacity: 0.8;
   
   /* Scale parameter: Change this decimal (e.g. 0.8, 1.2) to scale the video without modifying width/height */
-  --video-scale: 1.3;
+  --video-scale: 1.5;
   transform: scale(var(--video-scale));
   transform-origin: center left; /* Scales from the left side, keeping it aligned */
 }
 
-.about-video-wrapper .video-card {
+.autoplay-video {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+  /* box-shadow: 0 10px 30px rgba(0,0,0,0.5); */
   width: 100%;
   height: 100%;
 }
