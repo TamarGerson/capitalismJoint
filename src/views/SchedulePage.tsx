@@ -120,7 +120,7 @@ export default function SchedulePage() {
               </div>
               <div className="image-col">
                 <VideoCard 
-                  src="assets/videos/secondRow.mp4" 
+                  src="assets/videos/secondRow.mp4#t=0.5" 
                   muted={true}
                   style={{ width: '100%', height: '100%', boxShadow: 'none', objectPosition: '50% -60px' }}
                 />
