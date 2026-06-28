@@ -5,11 +5,13 @@ import AboutPage from './views/AboutPage';
 import SchedulePage from './views/SchedulePage';
 import Header from './components/Header';
 import SponsorHeader from './components/SponsorHeader';
+import RegisterModal from './components/RegisterModal';
 
 function App() {
   const [view, setView] = useState<'landing' | 'booklet' | 'about' | 'schedule'>('landing');
   const [displayView, setDisplayView] = useState<'landing' | 'booklet' | 'about' | 'schedule'>('landing');
   const [fadeState, setFadeState] = useState<'fade-in' | 'fade-out'>('fade-in');
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   
   // Keep a ref of the current view to avoid stale closures in handleHashChange
   const currentViewRef = useRef(view);
@@ -59,7 +61,7 @@ function App() {
     <div className="app-root">
       {/* Global Headers - these do not fade or unmount */}
       <SponsorHeader speed={40} />
-      <Header />
+      <Header onRegisterClick={() => setIsRegisterOpen(true)} />
 
       {/* Page Content with fade transition */}
       <div className={`view-transition-wrapper view-transition ${fadeState}`}>
@@ -73,6 +75,11 @@ function App() {
           <LandingPage />
         )}
       </div>
+
+      {/* Registration Modal Overlay */}
+      {isRegisterOpen && (
+        <RegisterModal onClose={() => setIsRegisterOpen(false)} />
+      )}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 interface HeaderProps {
   atTop?: boolean;
+  onRegisterClick?: () => void;
 }
 
-export default function Header({ atTop = false }: HeaderProps) {
+export default function Header({ atTop = false, onRegisterClick }: HeaderProps) {
   const handleTitleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const hash = window.location.hash;
     // If the hash is empty or '#', we are on the landing page, so reload the page
@@ -29,7 +30,7 @@ export default function Header({ atTop = false }: HeaderProps) {
 
         <div className="header-actions">
           <span className="header-date">יום חמישי 09.07.26 | ביג פאשן גלילות</span>
-          <button className="register-btn">הרשמה חופשית</button>
+          <button className="register-btn" onClick={onRegisterClick}>הרשמה חופשית</button>
         </div>
       </div>
     </header>
