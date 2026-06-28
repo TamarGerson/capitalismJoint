@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import SponsorHeader from '../components/SponsorHeader';
 import VideoCard from '../components/VideoCard';
 
 export default function AboutPage() {
@@ -25,8 +23,6 @@ export default function AboutPage() {
 
   return (
     <div className="about-page">
-      <SponsorHeader speed={40} />
-      <Header />
       <div 
         className="about-container"
         style={{ 
@@ -40,7 +36,7 @@ export default function AboutPage() {
       >
         {/* Video element on the left side, centered */}
         <div className="about-video-wrapper">
-          <VideoCard src="/assets/videos/dubaiMall.mp4" />
+          <VideoCard src="assets/videos/dubaiMall.mp4" />
         </div>
 
         {/* Description paragraphs */}

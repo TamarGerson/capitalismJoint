@@ -1,6 +1,4 @@
 import { useState, useEffect, type MouseEvent } from 'react';
-import Header from '../components/Header';
-import SponsorHeader from '../components/SponsorHeader';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import bookletPages from '../config/booklet.json';
 
@@ -39,8 +37,6 @@ export default function BookletPage() {
 
   return (
     <div className="booklet-page">
-      <SponsorHeader speed={40} />
-      <Header />
       <div 
         className="booklet-container"
         style={{ 

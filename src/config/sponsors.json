@@ -2,91 +2,91 @@
   {
     "id": "fox",
     "name": "Fox",
-    "src": "/assets/sponsors/fox.png",
+    "src": "assets/sponsors/fox.png",
     "scale": 0.7
   },
   {
     "id": "laline",
     "name": "Laline",
-    "src": "/assets/sponsors/Laline.png",
+    "src": "assets/sponsors/Laline.png",
     "scale": 1.5
   },
   {
     "id": "nike",
     "name": "Nike",
-    "src": "/assets/sponsors/NIKE.png",
+    "src": "assets/sponsors/NIKE.png",
     "scale": 0.8
   },
   {
     "id": "americaneagle",
     "name": "American Eagle",
-    "src": "/assets/sponsors/americanEagle.png",
+    "src": "assets/sponsors/americanEagle.png",
     "scale": 0.6
   },
   {
     "id": "bilabong",
     "name": "Billabong",
-    "src": "/assets/sponsors/bilabong.png",
+    "src": "assets/sponsors/bilabong.png",
     "scale": 1.3
   },
   {
     "id": "footlocker",
     "name": "Foot Locker",
-    "src": "/assets/sponsors/footLocker.svg",
+    "src": "assets/sponsors/footLocker.svg",
     "scale": 1.2
   },
   {
     "id": "big",
     "name": "Big Fashion",
-    "src": "/assets/sponsors/big.png",
+    "src": "assets/sponsors/big.png",
     "scale": 1.3
   },
   {
     "id": "alm",
     "name": "alm",
-    "src": "/assets/sponsors/alm.png",
+    "src": "assets/sponsors/alm.png",
     "scale": 1.5
   },
   {
     "id": "burgersBar",
     "name": "burgersBar",
-    "src": "/assets/sponsors/burgersBar.jpg",
+    "src": "assets/sponsors/burgersBar.jpg",
     "scale": 1.5
   },
   {
     "id": "golf",
     "name": "golf",
-    "src": "/assets/sponsors/golf.png",
+    "src": "assets/sponsors/golf.png",
     "scale": 0.8
   },
   {
     "id": "greg",
     "name": "greg",
-    "src": "/assets/sponsors/greg.png",
+    "src": "assets/sponsors/greg.png",
     "scale": 2
   },
   {
     "id": "roladin",
     "name": "roladin",
-    "src": "/assets/sponsors/roladin.png",
+    "src": "assets/sponsors/roladin.png",
     "scale": 1
   },
   {
     "id": "story",
     "name": "story",
-    "src": "/assets/sponsors/story.png",
+    "src": "assets/sponsors/story.png",
     "scale": 1
   },
   {
     "id": "twenty",
     "name": "twenty",
-    "src": "/assets/sponsors/twenty.png",
+    "src": "assets/sponsors/twenty.png",
     "scale": 1.1
   },
   {
     "id": "weShoes",
     "name": "weShoes",
-    "src": "/assets/sponsors/weShoes.png",
+    "src": "assets/sponsors/weShoes.png",
     "scale": 0.8
   }
 ]

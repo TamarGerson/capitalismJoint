@@ -518,6 +518,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: inherit;
 }
 
 .video-poster {
@@ -567,8 +568,8 @@ body {
   pointer-events: none;
   
   /* Mask using the same PNG image so the color only applies to opaque pixels */
-  -webkit-mask-image: url('/assets/main-base.png');
-  mask-image: url('/assets/main-base.png');
+  -webkit-mask-image: url('../public/assets/main-base.png');
+  mask-image: url('../public/assets/main-base.png');
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -596,7 +597,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('/assets/haulBackround.jpg');
+  background-image: url('../public/assets/haulBackround.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -773,7 +774,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('/assets/goldIphones.avif');
+  background-image: url('../public/assets/goldIphones.avif');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -1151,4 +1152,29 @@ body {
   right: auto; /* Reset inherited right offset so width works! */
   width: 400px; 
   font-size: 25px;
+}
+
+/* Smooth View Transitions & Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+.view-transition {
+  transition: opacity 0.10s ease-in-out;
+}
+
+.view-transition.fade-in {
+  opacity: 1;
+}
+
+.view-transition.fade-out {
+  opacity: 0;
+}
+
+.view-transition-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+  width: 100%;
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import SponsorHeader from '../components/SponsorHeader';
+import VideoCard from '../components/VideoCard';
 
 export default function SchedulePage() {
   const [scale, setScale] = useState(1);
@@ -21,8 +20,6 @@ export default function SchedulePage() {
 
   return (
     <div className="schedule-page">
-      <SponsorHeader speed={40} />
-      <Header />
       <div className="schedule-scroll-viewport">
         <div 
           className="schedule-scale-wrapper"
@@ -71,7 +68,11 @@ export default function SchedulePage() {
                 <p className="main-item-subtitle">על צרכנות תוכן ברשתות</p>
               </div>
               <div className="image-col">
-                <div className="image-placeholder"></div>
+                <VideoCard 
+                  src="assets/videos/firstRow.mp4" 
+                  muted={true}
+                  style={{ width: '100%', height: '100%', boxShadow: 'none', objectPosition: 'center top' }}
+                />
               </div>
               <div className="sub-sessions-wrapper">
                 <div className="sub-session">
@@ -118,7 +119,11 @@ export default function SchedulePage() {
                 <p className="main-item-subtitle">ביחד ולחוד כחלק מזהות אישית ומשייכות חברתית</p>
               </div>
               <div className="image-col">
-                <div className="image-placeholder"></div>
+                <VideoCard 
+                  src="assets/videos/secondRow.mp4" 
+                  muted={true}
+                  style={{ width: '100%', height: '100%', boxShadow: 'none', objectPosition: '50% -60px' }}
+                />
               </div>
               <div className="sub-sessions-wrapper">
                 <div className="sub-session">
@@ -165,7 +170,11 @@ export default function SchedulePage() {
                 <p className="main-item-subtitle">משפיעניות, יזמות וכלכלת ההשראה</p>
               </div>
               <div className="image-col">
-                <div className="image-placeholder"></div>
+                <VideoCard 
+                  src="assets/videos/thirdRow.mp4" 
+                  muted={true}
+                  style={{ width: '100%', height: '100%', boxShadow: 'none', objectPosition: 'center top' }}
+                />
               </div>
               <div className="sub-sessions-wrapper">
                 <div className="sub-session">
@@ -216,7 +225,11 @@ export default function SchedulePage() {
                 </div>
               </div>
               <div className="image-col">
-                <div className="image-placeholder"></div>
+                <VideoCard 
+                  src="assets/videos/forthRow.mp4" 
+                  muted={true}
+                  style={{ width: '100%', height: '100%', boxShadow: 'none', objectPosition: '50% -150px' }}
+                />
               </div>
               <div className="left-side-special-col">
                 <div className="special-time-col">

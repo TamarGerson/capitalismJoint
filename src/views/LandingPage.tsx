@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import SponsorHeader from '../components/SponsorHeader';
-import Header from '../components/Header';
 import CanvasContainer from '../components/CanvasContainer';
 import VideoCard from '../components/VideoCard';
 import FocalText from '../components/FocalText';
@@ -171,8 +169,6 @@ export default function LandingPage() {
  
   return (
     <div className="landing-page">
-      <SponsorHeader speed={40} />
-      <Header />
       
       <CanvasContainer 
         canvasWidth={CANVAS_WIDTH} 
@@ -206,7 +202,7 @@ export default function LandingPage() {
             height: `${MAIN_IMAGE_HEIGHT}px`
           }}
         >
-          <img src="/assets/main-base.png" alt="קפיטליזם זו לא מילה גסה" className="focal-img" />
+          <img src="assets/main-base.png" alt="קפיטליזם זו לא מילה גסה" className="focal-img" />
         </div>
 
         {/* Date, Time and Place text components based on Figma coordinates (shifted by +1500px horizontally) */}

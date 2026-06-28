@@ -3,27 +3,35 @@ import React, { useRef, useState } from 'react';
 interface VideoCardProps {
   src: string;
   style?: React.CSSProperties;
+  muted?: boolean;
 }
 
-export default function VideoCard({ src, style }: VideoCardProps) {
+export default function VideoCard({ src, style, muted = false }: VideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
     if (videoRef.current) {
-      // Try to play with sound first
-      videoRef.current.muted = false;
-      videoRef.current.play().catch(error => {
-        console.warn("Unmuted play blocked by browser, falling back to muted play:", error);
-        // Fallback: Play muted (which is always allowed by browsers without user interaction)
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          videoRef.current.play().catch(mutedError => {
-            console.error("Muted play also failed:", mutedError);
-          });
-        }
-      });
+      if (muted) {
+        videoRef.current.muted = true;
+        videoRef.current.play().catch(error => {
+          console.error("Muted play failed:", error);
+        });
+      } else {
+        // Try to play with sound first
+        videoRef.current.muted = false;
+        videoRef.current.play().catch(error => {
+          console.warn("Unmuted play blocked by browser, falling back to muted play:", error);
+          // Fallback: Play muted (which is always allowed by browsers without user interaction)
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(mutedError => {
+              console.error("Muted play also failed:", mutedError);
+            });
+          }
+        });
+      }
     }
   };
 
