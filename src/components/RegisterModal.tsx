@@ -51,7 +51,7 @@ export default function RegisterModal({ onClose }: RegisterModalProps) {
                 type="text"
                 id="fullName"
                 required
-                placeholder="ישראל ישראלי"
+                placeholder="עינב בובליל"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
@@ -70,19 +70,19 @@ export default function RegisterModal({ onClose }: RegisterModalProps) {
             </div>
 
             <div className="input-group">
-              <label htmlFor="email">כתובת אימייל</label>
+              <label htmlFor="email">מייל</label>
               <input
                 type="email"
                 id="email"
                 required
-                placeholder="name@example.com"
+                placeholder="einavBooblil@bigFashion.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
 
             <button type="submit" className="submit-btn" disabled={isLoading}>
-              {isLoading ? 'רושם אותך...' : 'הרשמה וקבלת כרטיס'}
+              {isLoading ? 'דואגים לך...' : 'הרשמה וקבלת כרטיס'}
             </button>
           </form>
         ) : (
@@ -95,7 +95,7 @@ export default function RegisterModal({ onClose }: RegisterModalProps) {
             </div>
 
             <p className="success-message">נתראה בקרוב!</p>
-            <p className="success-submessage">אל תשכחו להציג את הברקוד/QR קוד בכניסה לאירוע.</p>
+            <p className="success-submessage">אל תשכחו להציג את הברקוד בכניסה לאירוע.</p>
           </div>
         )}
       </div>

@@ -6,6 +6,7 @@ interface CanvasContainerProps {
   canvasHeight: number;
   initialScrollX: number;
   initialScrollY: number;
+  isDragDisabled?: boolean;
 }
 
 export default function CanvasContainer({ 
@@ -13,7 +14,8 @@ export default function CanvasContainer({
   canvasWidth, 
   canvasHeight, 
   initialScrollX, 
-  initialScrollY 
+  initialScrollY,
+  isDragDisabled = false
 }: CanvasContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -25,11 +27,20 @@ export default function CanvasContainer({
   // Refs for edge scrolling state
   const scrollDirection = useRef({ dx: 0, dy: 0 });
   const isDraggingRef = useRef(false);
+  const isDragDisabledRef = useRef(isDragDisabled);
 
   // Sync dragging state to ref to avoid stale closure issues in global listener
   useEffect(() => {
     isDraggingRef.current = isDragging;
   }, [isDragging]);
+
+  // Sync drag disabled state to ref and halt scrolling if disabled
+  useEffect(() => {
+    isDragDisabledRef.current = isDragDisabled;
+    if (isDragDisabled) {
+      scrollDirection.current = { dx: 0, dy: 0 };
+    }
+  }, [isDragDisabled]);
 
   // Set initial scroll position when the component mounts
   useEffect(() => {
@@ -67,8 +78,8 @@ export default function CanvasContainer({
     const MAX_SPEED = 20;  // Maximum scroll speed in pixels per frame
 
     const handleGlobalMouseMove = (e: MouseEvent) => {
-      // Don't edge-scroll if we are actively dragging/panning with click
-      if (isDraggingRef.current) {
+      // Don't edge-scroll if we are actively dragging/panning with click, or if dragging is disabled
+      if (isDraggingRef.current || isDragDisabledRef.current) {
         scrollDirection.current = { dx: 0, dy: 0 };
         return;
       }
@@ -121,6 +132,7 @@ export default function CanvasContainer({
 
   // Manual drag-panning mouse handlers
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (isDragDisabled) return;
     setIsDragging(true);
     setStartX(e.pageX - (containerRef.current?.offsetLeft || 0));
     setStartY(e.pageY - (containerRef.current?.offsetTop || 0));
@@ -139,7 +151,7 @@ export default function CanvasContainer({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || isDragDisabled) return;
     e.preventDefault();
     const x = e.pageX - (containerRef.current?.offsetLeft || 0);
     const y = e.pageY - (containerRef.current?.offsetTop || 0);

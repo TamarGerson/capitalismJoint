@@ -72,7 +72,7 @@ function App() {
         ) : displayView === 'schedule' ? (
           <SchedulePage />
         ) : (
-          <LandingPage />
+          <LandingPage isDragDisabled={isRegisterOpen} />
         )}
       </div>
 

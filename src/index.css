@@ -1220,16 +1220,16 @@ html {
 }
 
 .modal-card {
-  background-color: #161616;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
   width: 90%;
   max-width: 480px;
   padding: 40px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
   position: relative;
   direction: rtl;
-  color: #ffffff;
+  color: #000000;
   animation: modal-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -1250,7 +1250,7 @@ html {
   left: 20px;
   background: none;
   border: none;
-  color: #888888;
+  color: #666666;
   cursor: pointer;
   padding: 5px;
   display: flex;
@@ -1261,8 +1261,8 @@ html {
 }
 
 .modal-close-btn:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #000000;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .register-form {
@@ -1274,7 +1274,7 @@ html {
   font-family: 'TheBasics', sans-serif;
   font-weight: 700;
   font-size: 32px;
-  color: #ff0099;
+  color: #000000;
   text-align: center;
   margin: 0 0 8px 0;
 }
@@ -1282,7 +1282,7 @@ html {
 .modal-subtitle {
   font-family: 'TheBasics', sans-serif;
   font-size: 16px;
-  color: #888888;
+  color: #666666;
   text-align: center;
   margin: 0 0 28px 0;
 }
@@ -1297,17 +1297,17 @@ html {
   font-family: 'TheBasics', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: #cccccc;
+  color: #333333;
   margin-bottom: 8px;
   text-align: right;
 }
 
 .input-group input {
-  padding: 12px 16px;
+  padding: 12px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #f7f7f9;
+  color: #000000;
   font-family: inherit;
   font-size: 16px;
   text-align: right;
@@ -1316,9 +1316,13 @@ html {
 
 .input-group input:focus {
   border-color: #ff0099;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: #ffffff;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 0, 153, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 0, 153, 0.12);
+}
+
+.input-group input::placeholder {
+  color: #999999;
 }
 
 .submit-btn {
@@ -1345,7 +1349,7 @@ html {
 }
 
 .submit-btn:disabled {
-  background-color: #555555;
+  background-color: #cccccc;
   color: #888888;
   cursor: not-allowed;
   transform: none;
@@ -1361,7 +1365,7 @@ html {
 }
 
 .success-icon {
-  color: #00e676;
+  color: #00c853;
   margin-bottom: 16px;
   animation: pulse-success 2s infinite;
 }
@@ -1380,7 +1384,8 @@ html {
   background-color: #ffffff;
   padding: 16px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   margin-bottom: 24px;
 }
 
@@ -1394,14 +1399,14 @@ html {
   font-family: 'TheBasics', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
   margin: 0 0 8px 0;
 }
 
 .success-submessage {
   font-family: 'TheBasics', sans-serif;
   font-size: 15px;
-  color: #aaaaaa;
+  color: #ff0099;
   margin: 0;
   line-height: 1.4;
   max-width: 320px;

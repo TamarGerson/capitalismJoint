@@ -125,7 +125,11 @@ const computeSpawnedVideos = () => {
 
 const SPAWNED_VIDEOS = computeSpawnedVideos();
 
-export default function LandingPage() {
+interface LandingPageProps {
+  isDragDisabled?: boolean;
+}
+
+export default function LandingPage({ isDragDisabled = false }: LandingPageProps) {
   // Listen to hash changes to smooth-scroll when navigating to "about" page/section
   useEffect(() => {
     const handleHashChange = () => {
@@ -175,6 +179,7 @@ export default function LandingPage() {
         canvasHeight={CANVAS_HEIGHT}
         initialScrollX={INITIAL_SCROLL_X}
         initialScrollY={INITIAL_SCROLL_Y}
+        isDragDisabled={isDragDisabled}
       >
         {/* Background/Foreground Layer - Random Videos */}
         {SPAWNED_VIDEOS.map((video) => (
