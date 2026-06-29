@@ -6,10 +6,18 @@ interface HeaderProps {
 export default function Header({ atTop = false, onRegisterClick }: HeaderProps) {
   const handleTitleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const hash = window.location.hash;
-    // If the hash is empty or '#', we are on the landing page, so reload the page
+    // If the hash is empty or '#', we are on the landing page.
+    // Instead of reloading, scroll back to the default viewport center.
     if (!hash || hash === '#') {
       e.preventDefault();
-      window.location.reload();
+      const viewport = document.querySelector('.canvas-viewport');
+      if (viewport) {
+        viewport.scrollTo({
+          left: 2505, // INITIAL_SCROLL_X from LandingPage
+          top: 1198,  // INITIAL_SCROLL_Y from LandingPage
+          behavior: 'smooth'
+        });
+      }
     }
   };
 

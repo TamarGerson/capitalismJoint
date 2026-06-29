@@ -630,12 +630,36 @@ body {
   /* Calculated dynamic dimensions */
   --booklet-width: calc(var(--base-width) * var(--booklet-scale));
   --booklet-height: calc(var(--base-height) * var(--booklet-scale));
-  
-  /* Shift left position horizontally to keep layout balanced as size increases */
   --booklet-left: calc(var(--base-left) - (var(--booklet-width) - var(--base-width)) * 0.24);
-  
-  /* Dynamic vertical alignment for arrow buttons based on booklet height */
-  --booklet-vertical-center: calc(var(--base-top) + var(--booklet-height) / 2);
+
+  /* Active variables (overridden by active layout states) */
+  --active-width: var(--booklet-width);
+  --active-height: var(--booklet-height);
+  --active-left: var(--booklet-left);
+  --active-top: var(--base-top);
+
+  /* Dynamic vertical center for arrow buttons */
+  --booklet-vertical-center: calc(var(--active-top) + var(--active-height) / 2);
+}
+
+/* When single page layout is active in normal mode */
+.booklet-container.single-page-active {
+  --active-width: calc(var(--booklet-width) / 2);
+  --active-left: var(--booklet-left);
+}
+
+/* When bigger mode is active */
+.booklet-container.bigger-mode {
+  --booklet-scale: 2.2;
+  --active-top: calc((1200px - var(--active-height)) / 2);
+  --active-left: calc((1920px - var(--active-width)) / 2);
+}
+
+/* When both bigger mode and single page are active */
+.booklet-container.bigger-mode.single-page-active {
+  --active-width: calc(var(--booklet-width) / 2);
+  --active-top: calc((1200px - var(--booklet-height)) / 2);
+  --active-left: calc((1920px - var(--active-width)) / 2);
 }
 
 /* Arrow Buttons */
@@ -649,20 +673,23 @@ body {
   justify-content: center;
   width: 89px;
   height: 93px;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, 
+              opacity 0.2s ease-in-out,
+              left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
   z-index: 5;
 }
 
 .booklet-nav-btn.left {
   position: absolute;
-  left: calc(var(--booklet-left) - 95px);
+  left: calc(var(--active-left) - 95px);
   top: calc(var(--booklet-vertical-center) - 46.5px);
 }
 
 .booklet-nav-btn.right {
   position: absolute;
-  left: calc(var(--booklet-left) + var(--booklet-width) + 12px);
+  left: calc(var(--active-left) + var(--active-width) + 12px);
   top: calc(var(--booklet-vertical-center) - 46.5px);
 }
 
@@ -680,13 +707,53 @@ body {
   display: block;
 }
 
+/* Zoom Button */
+.booklet-zoom-btn {
+  position: absolute;
+  left: calc(var(--active-left) + var(--active-width) - 64px);
+  top: calc(var(--active-top) + 16px);
+  background: rgba(30, 30, 30, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+.booklet-zoom-btn:hover {
+  background: rgba(255, 0, 187, 0.3);
+  border-color: #ff00bb;
+  color: #ff00bb;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 187, 0.5);
+}
+
+.booklet-zoom-btn:active {
+  transform: scale(0.95);
+}
+
+.booklet-zoom-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.2px;
+}
+
 /* Image Container */
 .booklet-img-container {
   position: absolute;
-  left: var(--booklet-left);
-  top: var(--base-top);
-  width: var(--booklet-width);
-  height: var(--booklet-height);
+  left: var(--active-left);
+  top: var(--active-top);
+  width: var(--active-width);
+  height: var(--active-height);
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   overflow: hidden;
@@ -694,11 +761,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.booklet-img-container.single-page-layout {
-  width: calc(var(--booklet-width) / 2);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .booklet-img {
@@ -709,7 +775,7 @@ body {
 }
 
 .booklet-nav-btn svg {
-  color: #000000;
+  color: #ffffff;
   stroke-width: 1.5px;
   transition: color 0.2s ease-in-out, stroke-width 0.2s ease-in-out;
 }
@@ -735,6 +801,13 @@ body {
   direction: rtl;
   margin: 0;
   word-break: break-word;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booklet-container.bigger-mode .booklet-description {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(120px) scale(0.95);
 }
 
 .booklet-description .highlight-text,

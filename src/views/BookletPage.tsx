@@ -1,10 +1,11 @@
 import { useState, useEffect, type MouseEvent } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
 import bookletPages from '../config/booklet.json';
 
 export default function BookletPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [scale, setScale] = useState(1);
+  const [isBigger, setIsBigger] = useState(false);
 
   const nextPage = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -38,7 +39,7 @@ export default function BookletPage() {
   return (
     <div className="booklet-page">
       <div 
-        className="booklet-container"
+        className={`booklet-container ${isBigger ? 'bigger-mode' : ''} ${isSinglePage ? 'single-page-active' : ''}`}
         style={{ 
           transform: `scale(${scale})`,
           width: '1920px',
@@ -53,6 +54,16 @@ export default function BookletPage() {
           החוברת <span className="highlight-text">עוד יותר טוב ועוד יותר טוב</span> מבקשת להתבונן בקפיטליזם כמנגנון שמאפשר לאנשים להפוך אישיות למנוע של השפעה, הצלחה וכסף. דרך דמויותיהן של <span className="highlight-text">אודיה פינטו, עינב בובליל וליבנת אורינובסקי</span>, נשים שמעוררות לא פעם זלזול, ביקורת או לגלוג ציבורי, החוברת מציעה מבט אחר: כזה שרואה בהן לא רק תופעת רשת, אלא יזמיות של עצמן. כל אחת מהן הצליחה לבנות קהל ולהפוך את הנוכחות האישית שלה למותג בעל כוח כלכלי ממשי. זהו מבט על קפיטליזם ככוח שמייצר אפשרות: האפשרות לקחת אישיות ולהפוך אותה להשפעה רחבה, עצמאות כלכלית ומעמד חברתי.
         </p>
 
+        {/* Zoom In / Zoom Out Button */}
+        <button
+          className="booklet-zoom-btn"
+          onClick={() => setIsBigger(!isBigger)}
+          aria-label={isBigger ? "Zoom out booklet" : "Zoom in booklet"}
+          title={isBigger ? "הקטנה" : "הגדלה"}
+        >
+          {isBigger ? <ZoomOut size={24} /> : <ZoomIn size={24} />}
+        </button>
+
         {/* Left Arrow Button (Next Page for RTL) */}
         <button 
           className="booklet-nav-btn left" 
@@ -63,7 +74,7 @@ export default function BookletPage() {
         </button>
 
         {/* Booklet Image Container */}
-        <div className={`booklet-img-container ${isSinglePage ? 'single-page-layout' : ''}`}>
+        <div className="booklet-img-container">
           <img 
             src={bookletPages[currentPage]} 
             alt={`Booklet page ${currentPage + 1}`} 
