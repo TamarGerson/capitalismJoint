@@ -2,10 +2,16 @@ import { useState, useEffect, type MouseEvent } from 'react';
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
 import bookletPages from '../config/booklet.json';
 
+const innerBookletPages = [
+  'assets/innerBooklet/innerBook.jpg',
+  ...Array.from({ length: 22 }, (_, i) => `assets/innerBooklet/innerBook${i + 2}.jpg`)
+];
+
 export default function BookletPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [scale, setScale] = useState(1);
   const [isBigger, setIsBigger] = useState(false);
+  const [currentInnerPage, setCurrentInnerPage] = useState(0);
 
   const nextPage = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -16,6 +22,21 @@ export default function BookletPage() {
     e.stopPropagation();
     setCurrentPage((prev) => (prev - 1 + bookletPages.length) % bookletPages.length);
   };
+
+  const nextInnerPage = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setCurrentInnerPage((prev) => (prev + 1) % innerBookletPages.length);
+  };
+
+  const prevInnerPage = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setCurrentInnerPage((prev) => (prev - 1 + innerBookletPages.length) % innerBookletPages.length);
+  };
+
+  // Reset inner booklet page whenever user navigates to a different page in the main booklet
+  useEffect(() => {
+    setCurrentInnerPage(0);
+  }, [currentPage]);
 
   // Keep layout responsive and scale-to-fit
   useEffect(() => {
@@ -80,6 +101,43 @@ export default function BookletPage() {
             alt={`Booklet page ${currentPage + 1}`} 
             className={`booklet-img ${isSinglePage ? 'single-page' : ''}`}
           />
+
+          {/* Inner Booklet on websitePages13 (index 12) */}
+          {currentPage === 12 && (
+            <div className="inner-booklet-wrapper" onClick={(e) => e.stopPropagation()}>
+              {(() => {
+                const isInnerCover = currentInnerPage === 0;
+                const isInnerBackCover = currentInnerPage === innerBookletPages.length - 1;
+                return (
+                  <div className={`inner-booklet-container ${isInnerCover ? 'cover-active' : ''} ${isInnerBackCover ? 'back-cover-active' : ''}`}>
+                    <div className="inner-booklet-img-container">
+                      <button 
+                        className="inner-booklet-nav-btn left" 
+                        onClick={nextInnerPage}
+                        aria-label="Next inner page"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+
+                      <img 
+                        src={innerBookletPages[currentInnerPage]} 
+                        alt={`Inner booklet page ${currentInnerPage + 1}`} 
+                        className="inner-booklet-img"
+                      />
+
+                      <button 
+                        className="inner-booklet-nav-btn right" 
+                        onClick={prevInnerPage}
+                        aria-label="Previous inner page"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          )}
         </div>
 
         {/* Right Arrow Button (Previous Page for RTL) */}
